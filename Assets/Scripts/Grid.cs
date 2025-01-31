@@ -69,7 +69,7 @@ public class Grid : MonoBehaviour
             }
         }
     }
-
+    //tentativo
     public void Play()//define the functions order
     {
         try
