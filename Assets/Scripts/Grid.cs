@@ -18,7 +18,7 @@ public class Grid : MonoBehaviour
 
     public float square_offset = 0.0f;
     public float square3X3_offset = 0.0f;
-    public GameObject grid_square, SudokuSolved, SudokuUnsolved;
+    public GameObject grid_square, SudokuSolved, SudokuUnsolved, SolveButton;
     private Vector2 start_position;
     public float square_scale = 1.0f;
     private int[] lastCellCheck = new int[2];
@@ -32,6 +32,7 @@ public class Grid : MonoBehaviour
         start_position = new Vector2(-(square_scale+ square_offset )* 2f+ square3X3_offset, -(square_scale + square_offset) * 2.15f + square3X3_offset);
         SudokuSolved.SetActive(false);
         SudokuUnsolved.SetActive(false);
+        SolveButton.SetActive(true);
         lastCellCheck[0] = -1;
         lastCellCheck[1] = 0;
         SpawnGridSquare();
@@ -81,6 +82,7 @@ public class Grid : MonoBehaviour
         catch
         {
             //SUDOKU IRRISOLVIBILE
+            SolveButton.SetActive(false);
             SudokuUnsolved.SetActive(true);
         }
     }
@@ -221,6 +223,8 @@ public class Grid : MonoBehaviour
         if (SudokuAttender(randomGrid, 0, 0))
         {
             RandomGridEnd();
+
+            SolveButton.SetActive(false);
             SudokuSolved.SetActive(true);
         }
         else
