@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
-//using Newtonsoft.Json.Linq;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -46,13 +45,6 @@ public class Grid : MonoBehaviour
             Ysquare3x3_offset = 0;
             for (int j = 0; j < side; j++) //generate squares
             {
-                /* CANCELLARE
-                grid_square_.Add(Instantiate(grid_square, new Vector2(start_position.x + i * square_offset+Xsquare3x3_offset, start_position.y + j * square_offset+ Ysquare3x3_offset), Quaternion.identity) as GameObject);
-                grid_square_[grid_square_.Count - 1].transform.SetParent(this.transform, true);
-                grid_square_[grid_square_.Count - 1].transform.localScale = new Vector3(square_scale, square_scale, square_scale);
-                grid_square_[grid_square_.Count - 1].GetComponent<CellS>().setPosition(i, j);*/
-                //Cella[j,i]= Instantiate(grid_square, new Vector2(start_position.x + i * square_offset + Xsquare3x3_offset, start_position.y + j * square_offset + Ysquare3x3_offset), Quaternion.identity);
-                //Cella[j,i].GetComponent<CellS>().Instance(grid_square,start_position.x + i * square_offset + Xsquare3x3_offset, start_position.y + j * square_offset + Ysquare3x3_offset);
 
                 Cella[i, j] = Instantiate(grid_square, new Vector2(start_position.x + i * square_offset + Xsquare3x3_offset, start_position.y + j * square_offset + Ysquare3x3_offset), new Quaternion(0, 0, 0, 0));
                 Cella[i, j].transform.SetParent(this.transform, true);
@@ -73,6 +65,9 @@ public class Grid : MonoBehaviour
     //tentativo
     public void Play()//define the functions order
     {
+
+        SolveButton.SetActive(false);
+
         try
         {
         FirstCheck();
@@ -82,7 +77,6 @@ public class Grid : MonoBehaviour
         catch
         {
             //SUDOKU IRRISOLVIBILE
-            SolveButton.SetActive(false);
             SudokuUnsolved.SetActive(true);
         }
     }

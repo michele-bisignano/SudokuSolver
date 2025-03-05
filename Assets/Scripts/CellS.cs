@@ -118,24 +118,4 @@ public class CellS : MonoBehaviour//codice di ogni singola cella
     {
         return numCellChoises;
     }
-    /*public void trueCheck()
-    {
-
-
-        for (int i=0;i<9; i++)CANCELLARE
-        {
-            if (possibleCellNumber[i])
-            {
-
-                Debug.Log("\nCella: " + position[0] + "  " + position[1] + "\n"+i +" true\t");
-            }
-            else
-            {
-                Debug.Log("\nCella: " + position[0] + "  " + position[1] + "\n"+i + " false\t");
-
-            }
-        }
-    }
-    */
-
 }
