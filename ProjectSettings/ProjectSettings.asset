@@ -664,11 +664,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 38d9fa82-71f6-4e50-b787-02da83afc7c5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: SudokuSolver
+  organizationId: michealbolt
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
