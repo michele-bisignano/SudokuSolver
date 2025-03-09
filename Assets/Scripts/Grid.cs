@@ -17,11 +17,12 @@ public class Grid : MonoBehaviour
 
     public float square_offset = 0.0f;
     public float square3X3_offset = 0.0f;
-    public GameObject grid_square, SudokuSolved, SudokuUnsolved, SolveButton;
+    public GameObject grid_square, SudokuSolved, SudokuUnsolved, SolveButton, BruteForceError;
     private Vector2 start_position;
     public float square_scale = 1.0f;
     private int[] lastCellCheck = new int[2];
     private int[,] randomGrid = new int[9, 9];//contiene la griglia randomica
+    private bool isSudokuSolved;
 
     public GameObject[,] Cella = new GameObject[9, 9];
 
@@ -32,9 +33,12 @@ public class Grid : MonoBehaviour
         SudokuSolved.SetActive(false);
         SudokuUnsolved.SetActive(false);
         SolveButton.SetActive(true);
+        BruteForceError.SetActive(false);
         lastCellCheck[0] = -1;
         lastCellCheck[1] = 0;
+        isSudokuSolved = false;
         SpawnGridSquare();
+
     }
     private void SpawnGridSquare()
     {
@@ -72,7 +76,7 @@ public class Grid : MonoBehaviour
         {
         FirstCheck();
         NumChooseFounder();
-        RecursiveFunction();
+        SolveSudoku();
         }
         catch
         {
@@ -193,36 +197,44 @@ public class Grid : MonoBehaviour
             }
     }
 
-    //It calls al the function with the correct order, every time that a number is found the RecursiveFunction is called
-    private void RecursiveFunction()
+    //It calls al the function with the correct order, every time that a number is found the SolveSudoku() is called
+    private void SolveSudoku()
     {
-        valueChanged = false;
-
-        CellCheck();
-        if (valueChanged) RecursiveFunction();
-
-        RowCheck();
-        if (valueChanged) RecursiveFunction();
-
-        ColCheck();
-        if (valueChanged) RecursiveFunction();
-
-        Box3x3Check();
-        if (valueChanged) RecursiveFunction();
-
-        EqualPairTrue(lastCellCheck[0], lastCellCheck[1]);
-        if (valueChanged) RecursiveFunction();
-
-        RandomGridInitializer();
-        if (SudokuAttender(randomGrid, 0, 0))
+        while (!CheckIfSudokuIsSolved())
         {
-            RandomGridEnd();
+            valueChanged = false;
 
-            SolveButton.SetActive(false);
-            SudokuSolved.SetActive(true);
+            CellCheck();           
+            if (valueChanged) continue;
+
+            RowCheck();
+            if (valueChanged) continue;
+
+            ColCheck();
+            if (valueChanged) continue;
+
+            Box3x3Check();
+            if (valueChanged) continue;
+
+            EqualPairTrue(lastCellCheck[0], lastCellCheck[1]);
+            if (valueChanged) continue;
+
+            RandomGridInitializer();
+            if (SudokuAttender(randomGrid, 0, 0))
+            {
+                RandomGridEnd();
+                BruteForceError.SetActive(true);
+                break;
+            }
+            else
+            {
+                throw unsolvable;
+            }
         }
-        else
-            throw unsolvable;
+
+        SolveButton.SetActive(false);
+        SudokuSolved.SetActive(true);
+        isSudokuSolved = true;
     }
     private void CellCheck()//Check if the cell can store max a num
     {
@@ -547,7 +559,7 @@ public class Grid : MonoBehaviour
 
         //CAMBIARE sudoku risolto
     }
-
+    //CANCELLARE
     bool isSafe(int[,] randomGrid, int row, int col, int num)
     {
         // if we find the same num in the similar row,
@@ -618,4 +630,38 @@ public class Grid : MonoBehaviour
         return false;
     }
 
+    //Check if the sudoku is solved
+    bool CheckIfSudokuIsSolved()
+    {
+
+        for (int x = 0; x < 9; x++)
+        {
+            for (int y = 0; y < 9; y++)
+            {
+                if (!Cella[x, y].GetComponent<CellS>().isNumDecided)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    //CANCELLARE
+    private void PrintSudokuValues()
+    {
+        for (int y = 0; y < side; y++)
+        {
+            string row = "";
+            for (int x = 0; x < side; x++)
+            {
+                int value = Cella[x, y].GetComponent<CellS>().number;
+                row += value + " ";
+            }
+            Debug.Log(row);
+        }
+    }
+
 }
+
+

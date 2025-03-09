@@ -15,7 +15,6 @@ public class CellS : MonoBehaviour//codice di ogni singola cella
     public TMP_InputField obj_text;
     public int number;//the DEFINITIVE number
     public int[] position = new int[2];//the cell's position in the sudoku
-    //public GameObject grid_square;
 
     public bool[] possibleCellNumber= new bool[9];//true if the num can be the right one
     public bool isNumDecided;//true if the num is already decided
