@@ -1,18 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Grid : MonoBehaviour
 {
     Exception unsolvable;
-    int side = 9; //sudoku side
+    readonly int side = 9; //sudoku side
     bool valueChanged;//true when at least a value is changed
 
     public float square_offset = 0.0f;
@@ -29,7 +22,7 @@ public class Grid : MonoBehaviour
 
     void Start()
     {
-        start_position = new Vector2(-(square_scale+ square_offset )* 2f+ square3X3_offset, -(square_scale + square_offset) * 2.15f + square3X3_offset);
+        start_position = new Vector2(-(square_scale+ square_offset )* 2f+ square3X3_offset, -(square_scale + square_offset) * 2f + square3X3_offset);
         SudokuSolved.SetActive(false);
         SudokuUnsolved.SetActive(false);
         SolveButton.SetActive(true);
