@@ -70,3 +70,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Exclude Unity Shader Cache
+/[Aa]ssets/ShaderCache/
+
+# Exclude Blender backup files
+*.blend[1-9]
+
+# Exclude Unity crash reports
+/[Cc]rash[Rr]eports/

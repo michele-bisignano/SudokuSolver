@@ -1048,8 +1048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48129beff9abb324f9f685ad7fda4570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTargetAspect: 1.3
-  maxTargetAspect: 1.8
+  minTargetAspect: 0.6
+  maxTargetAspect: 1.9
 --- !u!1 &1187471895
 GameObject:
   m_ObjectHideFlags: 0
