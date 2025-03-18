@@ -10,9 +10,9 @@ SudokuSolver is an application that creates and solves Sudoku puzzles, developed
 
 ## 📝 Development Approach
 
-The development of this application prioritized **algorithmic complexity and logical efficiency** over strict adherence to object-oriented programming principles. The primary focus was on crafting **sophisticated solving algorithms** and optimizing the **execution flow**, ensuring an effective and intelligent Sudoku-solving process. 
+This project focuses on smart **solving algorithms** 🧠⚡ over rigid OOP principles. The goal was to optimize execution flow 🚀 and ensure a fast and intelligent Sudoku-solving experience.
 
-Rather than emphasizing class structures, inheritance, or encapsulation, the goal was to develop **high-performance logic** capable of solving puzzles efficiently. This means that while the project may not strictly follow OOP best practices, it delivers a powerful and optimized Sudoku-solving experience.
+Rather than strict class structures, the priority was efficiency and performance, making the solver effective. 🎯
 
 ## 👨‍💻 Developer
 
