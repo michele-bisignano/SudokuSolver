@@ -1,4 +1,6 @@
 # SudokuSolver 🎯
+<img src="Icon.png" alt="Game Logo" width="200" height="200">
+
 
 SudokuSolver is an application that creates and solves Sudoku puzzles, developed in **Unity** and **C#**. 🎲🧩
 
